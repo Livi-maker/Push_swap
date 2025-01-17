@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldei-sva <ldei-sva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 13:36:33 by ldei-sva          #+#    #+#             */
-/*   Updated: 2025/01/17 13:30:47 by ldei-sva         ###   ########.fr       */
+/*   Created: 2024/11/13 14:02:08 by ldei-sva          #+#    #+#             */
+/*   Updated: 2024/12/12 10:28:12 by ldei-sva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# ifndef BUFFER_SIZE 
-#  define BUFFER_SIZE 100
-# endif
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	void	*result;
 
-char	*get_next_line(int fd);
-int		is_there_newline(char *stack);
-char	*get_strjoin(char *stack, char *fileread);
-int		get_strlen(char *str);
-char	*freestack(char *stack, char *fileread);
+	result = NULL;
+	while (n > 0)
+	{
+		if (*(unsigned char *) s == (unsigned char) c)
+		{
+			result = (unsigned char *)s;
+			return (result);
+		}
+		s++;
+		n--;
+	}
+	return (result);
+}
 
-#endif
+/*int main()
+{
+	char	array[] = "ehi ciao";
+
+	printf("%s", ft_memchr(array, 'i', sizeof(array)));
+}*/

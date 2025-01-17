@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldei-sva <ldei-sva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 13:36:33 by ldei-sva          #+#    #+#             */
-/*   Updated: 2025/01/17 13:30:47 by ldei-sva         ###   ########.fr       */
+/*   Created: 2024/11/13 19:59:43 by ldei-sva          #+#    #+#             */
+/*   Updated: 2024/12/12 11:32:44 by ldei-sva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# ifndef BUFFER_SIZE 
-#  define BUFFER_SIZE 100
-# endif
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	index;
 
-char	*get_next_line(int fd);
-int		is_there_newline(char *stack);
-char	*get_strjoin(char *stack, char *fileread);
-int		get_strlen(char *str);
-char	*freestack(char *stack, char *fileread);
+	index = 0;
+	while (src[index] != '\0' && size > 1)
+	{
+		dst[index] = src[index];
+		size--;
+		index++;
+	}
+	if (size > 0)
+		dst[index] = '\0';
+	return (ft_strlen(src));
+}
 
-#endif
+/*int main()
+{
+	char	dst[5];
+	char	*pointer;
+
+	pointer = dst;
+	printf("%d", ft_strlcpy(pointer, "ehy ciao", 5));
+	printf("%s", dst);
+}*/

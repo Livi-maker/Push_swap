@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldei-sva <ldei-sva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 13:36:33 by ldei-sva          #+#    #+#             */
-/*   Updated: 2025/01/17 13:30:47 by ldei-sva         ###   ########.fr       */
+/*   Created: 2024/11/15 13:10:19 by ldei-sva          #+#    #+#             */
+/*   Updated: 2024/11/15 13:12:31 by ldei-sva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# ifndef BUFFER_SIZE 
-#  define BUFFER_SIZE 100
-# endif
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		len;
+	char	*string;
 
-char	*get_next_line(int fd);
-int		is_there_newline(char *stack);
-char	*get_strjoin(char *stack, char *fileread);
-int		get_strlen(char *str);
-char	*freestack(char *stack, char *fileread);
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	string = (char *) malloc (len * (sizeof(char)));
+	if (string == NULL)
+		return (NULL);
+	ft_strlcpy(string, s1, len);
+	ft_strlcat(string, s2, len);
+	return (string);
+}
 
-#endif
+/*int main(int ac, char **av)
+{
+	printf("%s", ft_strjoin(av[1], av[2]));
+}*/

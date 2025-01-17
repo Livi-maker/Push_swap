@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldei-sva <ldei-sva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 13:36:33 by ldei-sva          #+#    #+#             */
-/*   Updated: 2025/01/17 13:30:47 by ldei-sva         ###   ########.fr       */
+/*   Created: 2024/11/23 19:53:46 by ldei-sva          #+#    #+#             */
+/*   Updated: 2024/12/10 12:54:50 by ldei-sva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# ifndef BUFFER_SIZE 
-#  define BUFFER_SIZE 100
-# endif
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*pointer;
 
-char	*get_next_line(int fd);
-int		is_there_newline(char *stack);
-char	*get_strjoin(char *stack, char *fileread);
-int		get_strlen(char *str);
-char	*freestack(char *stack, char *fileread);
-
-#endif
+	if (lst == NULL || new == NULL)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	pointer = ft_lstlast(*lst);
+	pointer -> next = new;
+}
