@@ -16,26 +16,42 @@ int	is_right_order(t_list *stack)
 	return (1);
 }
 
+int	is_sorted(t_list *stack)
+{
+	int	n1;
+	int	n2;
+	int	sort;
+
+	sort = 0;
+	while (stack -> next != NULL)
+	{
+		n1 = ft_atoi(stack -> content);
+		n2 = ft_atoi((stack -> next) -> content);
+		if (n1 > n2)
+			sort++;
+		stack = stack -> next;
+	}
+	return (sort);
+}
+
+
 void	order_numbers(t_list **stackA, int *operations)
 {
-	t_list	**stackB;
+	/*t_list	**stackB;
 
 	stackB = malloc(sizeof(t_list *));
 	*stackB = NULL;
-	while (is_right_order(*stackA) == 0)
+	if (is_sorted(*stackA) > 1)
 	{
-		sa(stackA);
-		pb(stackA, stackB);
-		pb(stackA, stackB);
-		pb(stackA, stackB);
-		sa(stackA);
-		pa(stackA, stackB);
-		pa(stackA, stackB);
-		pa(stackA, stackB);
-	}
+		start_sorting(stackA, stackB, operations);
+		print_stack(*stackA);
+		print_stack(*stackB);
+	}*/
+	rra(stackA);
 	print_stack(*stackA);
-	*operations += 8;
-	return ;
+	rra(stackA);
+	print_stack(*stackA);
+	*operations += 1;
 }
 
 int	main(int ac, char **av)
@@ -48,6 +64,6 @@ int	main(int ac, char **av)
 	create_stack(stackA, ac, av);
 	order_numbers(stackA, &operations);
 	free(stackA);
-	ft_printf("%d", operations);
+	printf("%d", operations);
 	return (operations);
 }

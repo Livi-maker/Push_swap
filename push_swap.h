@@ -17,5 +17,7 @@ void	rr(t_list **stackA, t_list **stackB);
 void	rra(t_list **stackA);
 void	rrb(t_list **stackB);
 void	rrr(t_list **stackA, t_list **stackB);
+int		is_sorted(t_list *stackA);
+void	start_sorting(t_list **stackA, t_list **stackB, int *operations);
 
 #endif

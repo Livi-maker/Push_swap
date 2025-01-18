@@ -19,12 +19,12 @@ void print_stack(t_list *stack)
 {
 	int	number;
 
-	ft_printf("stack\n");
+	printf("stack\n");
 	while (stack)
 	{
 		number = ft_atoi(stack -> content);
-		ft_printf("%d\n", number);
+		printf("%d\n", number);
 		stack = stack -> next;
 	}
-	ft_printf("end\n");
+	printf("end\n");
 }
