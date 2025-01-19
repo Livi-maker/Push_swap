@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldei-sva <ldei-sva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 13:36:33 by ldei-sva          #+#    #+#             */
-/*   Updated: 2025/01/17 13:30:47 by ldei-sva         ###   ########.fr       */
+/*   Created: 2024/11/22 23:13:47 by ldei-sva          #+#    #+#             */
+/*   Updated: 2024/12/10 12:17:03 by ldei-sva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# ifndef BUFFER_SIZE 
-#  define BUFFER_SIZE 100
-# endif
+int	ft_lstsize(t_list *lst)
+{
+	int	len;
 
-char	*get_next_line(int fd);
-int		is_there_newline(char *stack);
-char	*get_strjoin(char *stack, char *fileread);
-int		get_strlen(char *str);
-char	*freestack(char *stack, char *fileread);
+	len = 0;
+	if (lst == NULL)
+		return (len);
+	while (lst != NULL)
+	{
+		len++;
+		lst = lst -> next;
+	}
+	return (len);
+}
 
-#endif
+/*int main()
+{
+	t_list	**lst;
+
+	lst = malloc (sizeof(t_list *));
+	ft_lstadd_front(lst, ft_lstnew("ciao"));
+	ft_lstadd_front(lst, ft_lstnew("ehi"));
+	printf("%d", ft_lstsize(*lst));
+}*/
