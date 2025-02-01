@@ -1,68 +1,80 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldei-sva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/01 13:54:15 by ldei-sva          #+#    #+#             */
+/*   Updated: 2025/02/01 13:54:18 by ldei-sva         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	sa(t_list **stackA)
+void	sa(t_list **stack_a)
 {
 	t_list	*temp;
 	t_list	*temp2;
 
-	if (ft_lstsize(*stackA) <= 1)
+	if (ft_lstsize(*stack_a) <= 1)
 		return ;
-	temp = *stackA;
-	*stackA = (*stackA) -> next;
-	temp2 = (*stackA) -> next;
-	(*stackA) -> next = temp;
+	temp = *stack_a;
+	*stack_a = (*stack_a)-> next;
+	temp2 = (*stack_a)-> next;
+	(*stack_a)-> next = temp;
 	temp -> next = temp2;
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_list **stackB)
+void	sb(t_list **stack_b)
 {
 	t_list	*temp;
 	t_list	*temp2;
 
-	if (ft_lstsize(*stackB) <= 1)
+	if (ft_lstsize(*stack_b) <= 1)
 		return ;
-	temp = *stackB;
-	*stackB = (*stackB) -> next;
-	temp2 = (*stackB) -> next;
-	(*stackB) -> next = temp;
+	temp = *stack_b;
+	*stack_b = (*stack_b)-> next;
+	temp2 = (*stack_b)-> next;
+	(*stack_b)-> next = temp;
 	temp -> next = temp2;
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_list **stackA, t_list **stackB)
+void	ss(t_list **stack_a, t_list **stack_b)
 {
-	sa(stackA);
-	sb(stackB);
+	sa(stack_a);
+	sb(stack_b);
 	write(1, "ss\n", 3);
 }
 
-void	pa(t_list **stackA, t_list **stackB)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*temp;
 	t_list	*temp2;
 
-	if (!stackB)
+	if (!stack_b)
 		return ;
-	temp = *stackA;
-	temp2 = *stackB;
-	*stackB = (*stackB) -> next;
-	ft_lstadd_front(stackA, temp2);
-	(*stackA) -> next = temp;
+	temp = *stack_a;
+	temp2 = *stack_b;
+	*stack_b = (*stack_b)-> next;
+	ft_lstadd_front(stack_a, temp2);
+	(*stack_a)-> next = temp;
 	write(1, "pa\n", 3);
 }
 
- void    pb(t_list **stackA, t_list **stackB)
+void	pb(t_list **stack_a, t_list **stack_b)
 {
-	t_list  *temp;
+	t_list	*temp;
 	t_list	*temp2;
-	
-	if (!stackA)
+
+	if (!stack_a)
 		return ;
-	temp = *stackB;
-	temp2 = *stackA;
-	*stackA = (*stackA) -> next;
-	ft_lstadd_front(stackB, temp2);
-	(*stackB) -> next = temp;
+	temp = *stack_b;
+	temp2 = *stack_a;
+	*stack_a = (*stack_a)-> next;
+	ft_lstadd_front(stack_b, temp2);
+	(*stack_b)-> next = temp;
 	write(1, "pb\n", 3);
- }
+}

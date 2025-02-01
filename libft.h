@@ -6,7 +6,7 @@
 /*   By: ldei-sva <ldei-sva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:10:55 by ldei-sva          #+#    #+#             */
-/*   Updated: 2025/01/17 13:24:30 by ldei-sva         ###   ########.fr       */
+/*   Updated: 2025/01/19 14:17:41 by ldei-sva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "ft_printf.h"
-# include "get_next_line.h"
+# include <stdio.h>
+# include <limits.h>
 
 typedef struct s_list
 {

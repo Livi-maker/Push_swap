@@ -1,69 +1,85 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldei-sva <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/30 20:21:22 by ldei-sva          #+#    #+#             */
+/*   Updated: 2025/02/01 15:45:06 by ldei-sva         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	is_right_order(t_list *stack)
+t_list	*findmin(t_list *stack)
 {
-	int	n1;
-	int	n2;
-	
-	while (stack -> next != NULL)
+	t_list	*temp;
+	int		number;
+
+	number = ft_atoi(stack -> content);
+	temp = stack;
+	while (stack -> next)
 	{
-		n1 = ft_atoi(stack -> content);
-		n2 = ft_atoi((stack -> next) -> content);
-		if (n1 > n2)
-			return (0);
+		if (number > ft_atoi((stack -> next)-> content))
+		{
+			number = ft_atoi((stack -> next)-> content);
+			temp = stack -> next;
+		}
 		stack = stack -> next;
 	}
-	return (1);
+	return (temp);
 }
 
 int	is_sorted(t_list *stack)
 {
-	int	n1;
-	int	n2;
-	int	sort;
+	int		n1;
+	int		n2;
+	t_list	*min;
+	t_list	*copy;
+	t_list	*end;
 
-	sort = 0;
-	while (stack -> next != NULL)
+	min = findmin(stack);
+	copy = min;
+	end = ft_lstlast(stack);
+	end -> next = stack;
+	while (min -> next != copy)
 	{
-		n1 = ft_atoi(stack -> content);
-		n2 = ft_atoi((stack -> next) -> content);
+		n1 = ft_atoi(min -> content);
+		n2 = ft_atoi((min -> next)-> content);
 		if (n1 > n2)
-			sort++;
-		stack = stack -> next;
+		{
+			end -> next = NULL;
+			return (0);
+		}
+		min = min -> next;
 	}
-	return (sort);
+	end -> next = NULL;
+	return (1);
 }
 
-
-void	order_numbers(t_list **stackA, int *operations)
+void	order_numbers(t_list **stack_a)
 {
-	/*t_list	**stackB;
+	t_list	**stack_b;
 
-	stackB = malloc(sizeof(t_list *));
-	*stackB = NULL;
-	if (is_sorted(*stackA) > 1)
-	{
-		start_sorting(stackA, stackB, operations);
-		print_stack(*stackA);
-		print_stack(*stackB);
-	}*/
-	rra(stackA);
-	print_stack(*stackA);
-	rra(stackA);
-	print_stack(*stackA);
-	*operations += 1;
+	stack_b = malloc(sizeof(t_list *));
+	*stack_b = NULL;
+	start_sorting(stack_a, stack_b);
+	free(stack_b);
 }
 
 int	main(int ac, char **av)
 {
-	t_list	**stackA;
-	int		operations;
+	t_list	**stack_a;
 
-	operations = 0;
-	stackA = malloc(sizeof(t_list *));
-	create_stack(stackA, ac, av);
-	order_numbers(stackA, &operations);
-	free(stackA);
-	printf("%d", operations);
-	return (operations);
+	stack_a = malloc(sizeof(t_list *));
+	if (parsing_input(ac, av, stack_a) == 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		free(stack_a);
+		return (0);
+	}
+	order_numbers(stack_a);
+	ft_lstclear(stack_a, free);
+	free(stack_a);
 }
