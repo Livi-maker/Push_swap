@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldei-sva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 13:54:15 by ldei-sva          #+#    #+#             */
-/*   Updated: 2025/02/01 13:54:18 by ldei-sva         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:27:09 by ldei-sva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	ss(t_list **stack_a, t_list **stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
-	write(1, "ss\n", 3);
 }
 
 void	pa(t_list **stack_a, t_list **stack_b)
@@ -52,7 +51,7 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	t_list	*temp;
 	t_list	*temp2;
 
-	if (!stack_b)
+	if (!(*stack_b))
 		return ;
 	temp = *stack_a;
 	temp2 = *stack_b;
@@ -66,7 +65,7 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	t_list	*temp;
 	t_list	*temp2;
 
-	if (!stack_a)
+	if (!(*stack_a))
 		return ;
 	temp = *stack_b;
 	temp2 = *stack_a;
