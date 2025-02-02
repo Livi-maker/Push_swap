@@ -6,7 +6,7 @@
 /*   By: ldei-sva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 18:11:25 by ldei-sva          #+#    #+#             */
-/*   Updated: 2025/02/01 15:44:45 by ldei-sva         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:18:47 by ldei-sva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,12 @@ int	parsing_input(int ac, char **av, t_list **stack_a)
 
 	n = 1;
 	*stack_a = NULL;
-	if (ac == 1)
-		return (0);
-	else
+	while (ac > 1)
 	{
-		while (ac > 1)
-		{
-			if (splitting(av[n], stack_a) == 0)
-				return (0);
-			ac--;
-			n++;
-		}
+		if (splitting(av[n], stack_a) == 0)
+			return (0);
+		ac--;
+		n++;
 	}
 	return (1);
 }

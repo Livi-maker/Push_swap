@@ -6,7 +6,7 @@
 /*   By: ldei-sva <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 20:21:22 by ldei-sva          #+#    #+#             */
-/*   Updated: 2025/02/01 15:45:06 by ldei-sva         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:19:46 by ldei-sva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	main(int ac, char **av)
 {
 	t_list	**stack_a;
 
+	if (ac == 1)
+		return (0);
 	stack_a = malloc(sizeof(t_list *));
 	if (parsing_input(ac, av, stack_a) == 0)
 	{
